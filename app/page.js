@@ -21,7 +21,7 @@ export default function Home() {
             <div>alex klein</div>
           </div>
           <div className="col-span-6 lg:col-span-4">
-            <div>is the creative development studio</div>
+            <div>is a leader, creator, and learner</div>
           </div>
         </div>
         <div className="grid grid-cols-12 gap-2 items-start mb-4 text-lg">
@@ -29,7 +29,7 @@ export default function Home() {
             <div>of</div>
           </div>
           <div className="col-span-6 lg:col-span-4">
-            <div>yannis yannakopoulos</div>
+            <div>many dreams & experiences</div>
           </div>
         </div>
         <div className="grid grid-cols-12 gap-2 items-start mb-4 ">
@@ -37,18 +37,21 @@ export default function Home() {
             <div>location</div>
           </div>
           <div className="col-span-6 lg:col-span-4">
-            <div>
+            {/* <div>
               37.9838° N, 23.7275° E 
               athens / greece
+            </div> */}
+            <div>
+              gainesville / florida
             </div>
           </div>
         </div>
         <div className="grid grid-cols-12 gap-2 items-start ">
           <div className="col-span-5 text-right lg:col-start-6 lg:col-span-2 xl:col-start-7">
-            <div>availability</div>
+            <div>born in</div>
           </div>
           <div className="col-span-6 lg:col-span-2 xl:col-span-1">
-            <div>Q2 2025</div>
+            <div>july 2004</div>
           </div>
         </div>
       </section>
