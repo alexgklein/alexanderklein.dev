@@ -55,7 +55,7 @@ const Footer = () => {
                 <div className="col-span-5 text-right lg:col-start-7 lg:col-span-1 xl:col-start-8">
                 and
                 </div>
-                <div className="col-span-6 lg:col-span-1">
+                <div className="col-span-6 lg:col-span-2">
                     all those who have helped me along the way
                 </div>
             </div>
