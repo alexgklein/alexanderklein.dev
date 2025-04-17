@@ -6,7 +6,7 @@ const NavBar = () => {
                 <ul className="flex flex-row">
                     <li><a href="" className="transform transition duration-100 hover:skew-12" >about</a>,</li>
                     <li><a href="" className="transform transition duration-100 hover:skew-12" >experience</a>,</li>
-                    <li><a href="" className="transform transition duration-100 hover:skew-12" >school</a>,</li>
+                    <li><a href="/school" className="transform transition duration-100 hover:skew-12" >school</a>,</li>
                     <li><a href="" className="transform transition duration-100 hover:skew-12" >contact</a></li>
                 </ul>
             </nav>

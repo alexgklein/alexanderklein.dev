@@ -41,11 +41,15 @@ const Footer = () => {
                     school
                 </a>
                 <br />
+                <a href="/gratitude" className="email" >
+                    gratitude
+                </a>
+                <br />
 
                 </div>
             </div>
 
-            <div className="grid grid-cols-12 gap-2 items-start mb-4">
+            {/* <div className="grid grid-cols-12 gap-2 items-start mb-4">
                 <div className="col-span-5 text-right lg:col-start-6 lg:col-span-2 xl:col-start-7">
                 acknowledgements
                 </div>
@@ -58,7 +62,7 @@ const Footer = () => {
                 <div className="col-span-6 lg:col-span-2">
                     all those who have helped me along the way
                 </div>
-            </div>
+            </div> */}
 
             {/* Row 4 – Colophon */}
             <div className="grid grid-cols-12 gap-2 items-start">
