@@ -21,14 +21,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #181818;
+    --background: #000000;
+    /* --background: #181818; */
     --foreground: #F2F0EF;
   }
+}
+
+@font-face {
+  font-family: 'ITC Avant Garde';
+  src: url('/fonts/ITCAvantGardePro-Bold.otf') format('opentype');
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-family: 'ITC Avant Garde', Poppins, Arial, Helvetica, sans-serif;
   padding: 2rem;
 }

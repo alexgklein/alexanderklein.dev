@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "alex klein",
+  title: "ALEXANDER KLEIN",
   description: "the digitial portfolio of alexander klein",
 };
 
