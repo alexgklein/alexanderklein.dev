@@ -1,6 +1,6 @@
 const NavBar = () => {
     return (
-        <div className="fixed grid grid-cols-3 items-center text-sm lg:text-lg">
+        <div className="grid grid-cols-3 items-center text-sm lg:text-lg">
             <a className="justify-self-start" href="/">
                 {/* AK Small Logo */}
                 <svg 
@@ -44,14 +44,6 @@ const NavBar = () => {
                 <p>
                     4ever
                 </p>
-                {/* <div>
-                    <p className="text-xs text-right">
-                        Forever Learning
-                    </p>
-                    <p className="text-xs text-right">
-                        & Creating
-                    </p>
-                </div> */}
             </div>
         </div>
     );

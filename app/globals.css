@@ -32,9 +32,34 @@
   src: url('/fonts/ITCAvantGardePro-Bold.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'ITC Avant Garde Book';
+  src: url('/fonts/ITCAvantGardeGothicLTBook.ttf') format('truetype');
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'ITC Avant Garde', Poppins, Arial, Helvetica, sans-serif;
   padding: 2rem;
+}
+
+@layer utilities {
+  .font-avant {
+    font-family: 'ITC Avant Garde', sans-serif;
+  }
+  .font-avant-book {
+    font-family: 'ITC Avant Garde Book', sans-serif;
+  }
 }
