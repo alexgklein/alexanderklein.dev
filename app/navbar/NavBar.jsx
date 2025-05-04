@@ -1,6 +1,6 @@
 const NavBar = () => {
     return (
-        <div className="grid grid-cols-3 items-center text-sm lg:text-lg">
+        <div className="fixed top-0 left-0 w-full z-50 grid grid-cols-3 p-8 items-center text-sm lg:text-lg font-bold">
             <a className="justify-self-start" href="/">
                 {/* AK Small Logo */}
                 <svg 
