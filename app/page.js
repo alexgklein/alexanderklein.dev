@@ -112,12 +112,20 @@ export default function Home() {
       canvas.height = height;
       ctx.fillStyle = "#279cfb";
       ctx.fillRect(0, 0, width, height);
-      const fontSize = Math.round(250 * window.devicePixelRatio);
+      const fontSize = Math.round(300 * window.devicePixelRatio);
       ctx.fillStyle = "#EBEEE8";
       ctx.font = `bold ${fontSize}px Poppins`;
       ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("alex klein", width / 2, height / 2);
+      ctx.textBaseline = "top";
+      const topPadding = Math.round(90 * window.devicePixelRatio);
+      ctx.fillText("alex klein", width / 2, topPadding);
+      // const subtitleY = topPadding + fontSize + Math.round(10 * window.devicePixelRatio);
+      // ctx.font = `normal ${Math.round(40 * window.devicePixelRatio)}px Poppins`;
+      // ctx.fillText(
+      //   "forever learning, dreaming, and creating",
+      //   width / 2,
+      //   subtitleY
+      // );
       textTexture.needsUpdate = true;
     }
 
@@ -212,5 +220,21 @@ export default function Home() {
       </main>
     );
   }
-  return <main ref={mountRef} className={`${poppins.className} w-screen min-h-screen relative`} />;
+  return (
+    <main className="w-screen h-screen overflow-y-auto scroll-smooth snap-y snap-mandatory">
+      <section className="h-screen snap-start relative">
+        <div ref={mountRef} className="absolute inset-0" />
+        <div className="absolute bottom-0 left-0 p-8 z-50 text-white">
+          {/* overlay text */}
+          <div className="grid grid-rows-2">
+            <div className="text-3xl font-bold">forever learning, dreaming, creating</div>
+            <div className="text-3xl font-bold pl-28">and always making waves</div>
+          </div>
+        </div>
+      </section>
+      <section className="h-screen snap-start bg-white text-black flex items-center justify-center">
+        <h2 className="text-4xl font-semibold">Welcome to the next section</h2>
+      </section>
+    </main>
+  );
 }
