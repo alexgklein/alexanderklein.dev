@@ -1,274 +1,211 @@
+
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { Poppins } from "next/font/google";
-import * as THREE from "three";
-import {
-  simulationVertexShader,
-  simulationFragmentShader,
-  renderVertexShader,
-  renderFragmentShader,
-} from "./shaders.js";
-import BioSection from "./sections/BioSection";
-import StatementSection from "./sections/StatementSection";
-import NavBar from "./navbar/NavBar";
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-});
+import React, { useState, useEffect } from 'react';
 
 export default function Home() {
-  const mountRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [currentTime, setCurrentTime] = useState('');
+  const words = ["the gator", "the engineer", "the barber", "the berg"];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const estTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-      const timeString = estTime.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-        timeZone: 'America/New_York'
-      });
-      setCurrentTime(timeString);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % words.length);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-    const mount = mountRef.current;
-    if (!mount) return;
-
-    // Core scenes and camera
-    const scene = new THREE.Scene();
-    const simScene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      preserveDrawingBuffer: true,
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(mount.clientWidth, mount.clientHeight);
-    mount.appendChild(renderer.domElement);
-
-    // Mouse & frame state
-    const mouse = new THREE.Vector2();
-    let frame = 0;
-    let isUserMoved = false;
-
-    // Timer to restart rain when user stops moving
-    let moveTimeout;
-    const startRain = () => { isUserMoved = false; };
-    const resetRainTimer = () => {
-      clearTimeout(moveTimeout);
-      moveTimeout = setTimeout(startRain, 5000); // after 2s inactivity, resume rain
-    };
-
-    // Render targets
-    let width = mount.clientWidth * window.devicePixelRatio;
-    let height = mount.clientHeight * window.devicePixelRatio;
-    const options = {
-      format: THREE.RGBAFormat,
-      type: THREE.FloatType,
-      minFilter: THREE.LinearFilter,
-      magFilter: THREE.LinearFilter,
-      stencilBuffer: false,
-      depthBuffer: false,
-    };
-    let rtA = new THREE.WebGLRenderTarget(width, height, options);
-    let rtB = new THREE.WebGLRenderTarget(width, height, options);
-
-    // Simulation shader material
-    const simMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        textureA: { value: null },
-        mouse: { value: mouse },
-        resolution: { value: new THREE.Vector2(width, height) },
-        time: { value: 0 },
-        frame: { value: 0 },
-        rippleRadius: { value: 0.02 },
-      },
-      vertexShader: simulationVertexShader,
-      fragmentShader: simulationFragmentShader,
-    });
-
-    // Render shader material
-    const renderMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        textureA: { value: null },
-        textureB: { value: null },
-      },
-      vertexShader: renderVertexShader,
-      fragmentShader: renderFragmentShader,
-      transparent: true,
-    });
-
-    // Quad geometry
-    const planeGeo = new THREE.PlaneGeometry(2, 2);
-    const simQuad = new THREE.Mesh(planeGeo, simMaterial);
-    const renderQuad = new THREE.Mesh(planeGeo, renderMaterial);
-    simScene.add(simQuad);
-    scene.add(renderQuad);
-
-    // Text canvas & texture
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d", { alpha: true });
-    const textTexture = new THREE.CanvasTexture(canvas);
-    textTexture.minFilter = THREE.LinearFilter;
-    textTexture.magFilter = THREE.LinearFilter;
-    textTexture.format = THREE.RGBAFormat;
-
-    function drawText() {
-      width = mount.clientWidth * window.devicePixelRatio;
-      height = mount.clientHeight * window.devicePixelRatio;
-      canvas.width = width;
-      canvas.height = height;
-      ctx.fillStyle = "#279cfb";
-      ctx.fillRect(0, 0, width, height);
-      const fontSize = Math.round(300 * window.devicePixelRatio);
-      ctx.fillStyle = "#EBEEE8";
-      ctx.font = `bold ${fontSize}px Poppins`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "top";
-      const topPadding = Math.round(70 * window.devicePixelRatio);
-      ctx.fillText("alex klein", width / 2, topPadding);
-      // const subtitleY = topPadding + fontSize + Math.round(10 * window.devicePixelRatio);
-      // ctx.font = `normal ${Math.round(40 * window.devicePixelRatio)}px Poppins`;
-      // ctx.fillText(
-      //   "forever learning, dreaming, and creating",
-      //   width / 2,
-      //   subtitleY
-      // );
-      textTexture.needsUpdate = true;
-    }
-
-    drawText();
-
-    // Handle resizing
-    const handleResize = () => {
-      renderer.setSize(mount.clientWidth, mount.clientHeight);
-      drawText();
-      simMaterial.uniforms.resolution.value.set(
-        mount.clientWidth * window.devicePixelRatio,
-        mount.clientHeight * window.devicePixelRatio
-      );
-      rtA.setSize(mount.clientWidth * window.devicePixelRatio, mount.clientHeight * window.devicePixelRatio);
-      rtB.setSize(mount.clientWidth * window.devicePixelRatio, mount.clientHeight * window.devicePixelRatio);
-    };
-    window.addEventListener("resize", handleResize);
-
-    // Mouse interactions
-    renderer.domElement.addEventListener("mousemove", (e) => {
-      isUserMoved = true;
-      resetRainTimer();
-      const rect = mount.getBoundingClientRect();
-      // Convert to canvas pixel coordinates
-      mouse.x = (e.clientX - rect.left) * window.devicePixelRatio;
-      // Invert y-axis: bottom of canvas is y=0 in simulation
-      mouse.y = (rect.height * window.devicePixelRatio) - (e.clientY - rect.top) * window.devicePixelRatio;
-    });
-    renderer.domElement.addEventListener("mouseleave", () => {
-      mouse.set(0, 0);
-      resetRainTimer();
-    });
-
-    // Animation loop
-    let animationId;
-    const animate = () => {
-      // Switch ripple size based on user interaction
-      simMaterial.uniforms.rippleRadius.value = isUserMoved ? 0.02 : 0.1;
-
-      // Rain simulation before user moves mouse
-      if (!isUserMoved) {
-          mouse.x = Math.random() * width;
-          mouse.y = Math.random() * height;
-      }
-      simMaterial.uniforms.frame.value = frame++;
-      simMaterial.uniforms.time.value = performance.now() / 1000;
-      simMaterial.uniforms.textureA.value = rtA.texture;
-      renderer.setRenderTarget(rtB);
-      renderer.render(simScene, camera);
-      renderMaterial.uniforms.textureA.value = rtB.texture;
-      renderMaterial.uniforms.textureB.value = textTexture;
-      renderer.setRenderTarget(null);
-      renderer.render(scene, camera);
-      [rtA, rtB] = [rtB, rtA];
-      // Only inject when cursor moves: reset after each frame
-      // mouse.set(0, 0);  <-- This line removed as per instructions
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    // Cleanup on unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationId);
-      mount.removeChild(renderer.domElement);
-      rtA.dispose();
-      rtB.dispose();
-      renderer.dispose();
-    };
-  }, []);
-
-  useEffect(() => {
-    let prevWidth = window.innerWidth;
-    const handleResizeReload = () => {
-      if (window.innerWidth !== prevWidth) {
-        window.location.reload();
-      }
-    };
-    window.addEventListener('resize', handleResizeReload);
-    return () => window.removeEventListener('resize', handleResizeReload);
-  }, []);
-
-  if (isMobile) {
-    return (
-      <main className="w-screen">
-        <section className="h-screen relative bg-[#279cfb]">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <h1 className="text-6xl md:text-6xl font-bold text-[#EBEEE8] font-poppins">alex klein</h1>
-          </div>
-          <div className="absolute bottom-0 left-0 p-8 z-50 text-[#EBEEE8]">
-            <div className="grid grid-rows-2">
-              <div className="text-2xl md:text-3xl font-bold">forever learning, dreaming, creating</div>
-              <div className="text-2xl md:text-3xl font-bold pl-8 md:pl-28">and always making waves</div>
+  return (
+    <>
+      {/* Name Logo Header */}
+      <div className="h-screen flex flex-col items-center justify-center">      
+        <div className="space-y-2 w-full">
+            {/* Alexander (Top) Line */}
+            <div className="grid grid-cols-5 h-1/2">
+              <div className="col-span-4">
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    xmlnsXlink="http://www.w3.org/1999/xlink" 
+                    zoomAndPan="magnify" 
+                    preserveAspectRatio="xMidYMid meet" 
+                    version="1.0" 
+                    viewBox="4.22 313.52 919.6 130.38"
+                    className="w-full text-blue dark:text-white"
+                >
+                  <defs>
+                    <g />
+                  </defs>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(11.270592, 443.882047)">
+                      <g>
+                        <path d="M 115.375 0 L 82.09375 0 L 82.09375 -18.84375 L 44.390625 -18.84375 L 32.9375 0 L -7.046875 0 L 82.4375 -130.359375 L 115.375 -130.359375 Z M 82.09375 -45.265625 L 82.09375 -81.390625 L 81.734375 -81.390625 L 60.25 -45.265625 Z M 82.09375 -45.265625 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(121.113324, 443.882047)">
+                      <g>
+                        <path d="M 84.5625 0 L 12.6875 0 L 12.6875 -130.359375 L 45.984375 -130.359375 L 45.984375 -29.234375 L 84.5625 -29.234375 Z M 84.5625 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(200.300694, 443.882047)">
+                      <g>
+                        <path d="M 84.203125 0 L 11.796875 0 L 11.796875 -130.359375 L 84.203125 -130.359375 L 84.203125 -101.109375 L 43.6875 -101.109375 L 43.6875 -80.859375 L 82.96875 -80.859375 L 82.96875 -51.609375 L 43.6875 -51.609375 L 43.6875 -29.234375 L 84.203125 -29.234375 Z M 84.203125 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(286.707647, 443.882047)">
+                      <g>
+                        <path d="M 131.765625 0 L 94.0625 0 L 65.875 -46.15625 L 39.109375 0 L 1.9375 0 L 47.5625 -69.40625 L 7.21875 -130.359375 L 44.921875 -130.359375 L 67.296875 -93.1875 L 88.953125 -130.359375 L 126.484375 -130.359375 L 86.671875 -68.703125 Z M 131.765625 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(387.200113, 443.898338)">
+                      <g>
+                        <path d="M 115.28125 0 L 82.015625 0 L 82.015625 -18.828125 L 44.359375 -18.828125 L 32.90625 0 L -7.046875 0 L 82.375 -130.234375 L 115.28125 -130.234375 Z M 82.015625 -45.234375 L 82.015625 -81.3125 L 81.65625 -81.3125 L 60.1875 -45.234375 Z M 82.015625 -45.234375 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(498.869266, 443.882047)">
+                      <g>
+                        <path d="M 121.71875 0 L 92.828125 0 L 43.15625 -79.265625 L 42.8125 -79.09375 L 43.6875 0 L 11.796875 0 L 11.796875 -130.359375 L 40.515625 -130.359375 L 90.890625 -48.4375 L 91.25 -48.796875 L 89.84375 -130.359375 L 121.71875 -130.359375 Z M 121.71875 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(617.597982, 443.882047)">
+                      <g>
+                        <path d="M 122.78125 -65.53125 C 122.78125 -44.15625 116.9375 -27.890625 105.25 -16.734375 C 93.5625 -5.578125 77.035156 0 55.671875 0 L 10.046875 0 L 10.046875 -130.359375 L 53.203125 -130.359375 C 61.066406 -130.359375 68.429688 -129.738281 75.296875 -128.5 C 82.171875 -127.269531 88.570312 -124.921875 94.5 -121.453125 C 100.4375 -117.992188 105.867188 -112.859375 110.796875 -106.046875 C 115.023438 -100.171875 118.078125 -93.769531 119.953125 -86.84375 C 121.835938 -79.914062 122.78125 -72.8125 122.78125 -65.53125 Z M 89.484375 -65 C 89.484375 -71.925781 88.367188 -78.117188 86.140625 -83.578125 C 83.910156 -89.046875 80.472656 -93.332031 75.828125 -96.4375 C 71.191406 -99.550781 65.175781 -101.109375 57.78125 -101.109375 L 43.328125 -101.109375 L 43.328125 -29.234375 L 57.609375 -29.234375 C 68.992188 -29.234375 77.148438 -32.550781 82.078125 -39.1875 C 87.015625 -45.820312 89.484375 -54.425781 89.484375 -65 Z M 89.484375 -65 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(733.332053, 443.882047)">
+                      <g>
+                        <path d="M 84.203125 0 L 11.796875 0 L 11.796875 -130.359375 L 84.203125 -130.359375 L 84.203125 -101.109375 L 43.6875 -101.109375 L 43.6875 -80.859375 L 82.96875 -80.859375 L 82.96875 -51.609375 L 43.6875 -51.609375 L 43.6875 -29.234375 L 84.203125 -29.234375 Z M 84.203125 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(811.606909, 443.882047)">
+                      <g>
+                        <path d="M 112.21875 0 L 74.15625 0 L 44.046875 -42.09375 L 43.6875 -42.09375 L 43.6875 0 L 11.796875 0 L 11.796875 -130.359375 L 53.015625 -130.359375 C 57.597656 -130.359375 62.265625 -130.207031 67.015625 -129.90625 C 71.773438 -129.613281 76.382812 -128.820312 80.84375 -127.53125 C 85.3125 -126.238281 89.425781 -124.066406 93.1875 -121.015625 C 98.59375 -116.671875 102.613281 -111.359375 105.25 -105.078125 C 107.894531 -98.796875 109.21875 -92.25 109.21875 -85.4375 C 109.21875 -78.738281 107.953125 -72.484375 105.421875 -66.671875 C 102.898438 -60.859375 99.234375 -55.984375 94.421875 -52.046875 C 89.609375 -48.117188 83.734375 -45.566406 76.796875 -44.390625 Z M 77.328125 -83.5 C 77.328125 -89.957031 75.179688 -94.503906 70.890625 -97.140625 C 66.609375 -99.785156 61.59375 -101.109375 55.84375 -101.109375 L 43.6875 -101.109375 L 43.6875 -64.828125 L 55.484375 -64.828125 C 61.710938 -64.828125 66.910156 -66.265625 71.078125 -69.140625 C 75.242188 -72.015625 77.328125 -76.800781 77.328125 -83.5 Z M 77.328125 -83.5 " />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div>
+                
+              </div>
+            </div>
+            {/* Klein (Bottom) Line */}
+            <div className="grid grid-cols-5 h-3/5"> 
+              <div className="col-span-3">
+                <div className="h-full pl-18 grid grid-cols-5 items-center">
+                  <p className="text-5xl font-bold text-right mr-3">"</p>
+                  <p className="col-span-3 text-5xl font-bold text-center uppercase tracking-tighter">
+                    {words[currentIndex]}
+                  </p>
+                  {/* cycle through leader, gator, barber, berg, learner */}
+                  <p className="text-5xl font-bold text-left ml-3">"</p>
+                </div>
+              </div>
+              <div className="col-span-2">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  xmlnsXlink="http://www.w3.org/1999/xlink" 
+                  zoomAndPan="magnify" 
+                  preserveAspectRatio="xMidYMid meet" 
+                  version="1.0" 
+                  viewBox="11.19 16.31 418.83 130.36"
+                    className="pl-16 w-full text-blue dark:text-white"
+                >
+                  <defs>
+                    <g />
+                  </defs>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(-4.139824, 146.666321)">
+                      <g>
+                        <path d="M 123.484375 0 L 84.5625 0 L 48.96875 -56.375 L 48.625 -56.375 L 48.625 0 L 15.328125 0 L 15.328125 -130.359375 L 48.625 -130.359375 L 48.625 -71.703125 L 48.96875 -71.703125 L 85.78125 -130.359375 L 120.671875 -130.359375 L 77.515625 -65.359375 Z M 123.484375 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(112.122953, 146.666321)">
+                      <g>
+                        <path d="M 84.5625 0 L 12.6875 0 L 12.6875 -130.359375 L 45.984375 -130.359375 L 45.984375 -29.234375 L 84.5625 -29.234375 Z M 84.5625 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(190.394821, 146.666321)">
+                      <g>
+                        <path d="M 84.203125 0 L 11.796875 0 L 11.796875 -130.359375 L 84.203125 -130.359375 L 84.203125 -101.109375 L 43.6875 -101.109375 L 43.6875 -80.859375 L 82.96875 -80.859375 L 82.96875 -51.609375 L 43.6875 -51.609375 L 43.6875 -29.234375 L 84.203125 -29.234375 Z M 84.203125 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(269.167521, 146.650032)">
+                      <g>
+                        <path d="M 45.0625 0 L 11.796875 0 L 11.796875 -130.234375 L 45.0625 -130.234375 Z M 45.0625 0 " />
+                      </g>
+                    </g>
+                  </g>
+                  <g fill="currentcolor" fillOpacity="1">
+                    <g transform="translate(308.412987, 146.650032)">
+                      <g>
+                        <path d="M 121.609375 0 L 92.75 0 L 43.125 -79.203125 L 42.765625 -79.03125 L 43.640625 0 L 11.796875 0 L 11.796875 -130.234375 L 40.484375 -130.234375 L 90.8125 -48.40625 L 91.171875 -48.75 L 89.765625 -130.234375 L 121.609375 -130.234375 Z M 121.609375 0 " />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+        </div>
+      </div>
+      {/* Why Statement */}
+      <div className='h-1/2 flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center justify-center'>
+          <h1 className='text-2xl/12 font-bold text-center font-avant-book'>
+            Everything I do is in attempt to be the best.
+            <br></br>
+            To try something new, to its fullest extent, is to learn what it truly means to do it.
+            <br></br>
+            To experience that pursuit of greatness, is to experience life itself.
+            <br></br>
+            Giving my all, is the only way I know how to live.
+          </h1>
+        </div>
+      </div>
+      {/* Video Statement */}
+      <div className='py-24 h-1/2 flex flex-col items-center justify-center'>
+        <div className='grid grid-cols-7 h-full'>
+          <div className='col-span-2 flex items-center justify-start'>
+            <div className='w-3/5'>
+                <p className='text-xs text-left uppercase font-avant-book font-bold tracking-widest'>
+                  We exist to challenge the mundane and monotonous
+                </p>
             </div>
           </div>
-        </section>
-        <BioSection />
-      </main>
-    );
-  }
-  return (
-    <main className="w-screen">
-      <NavBar />
-      <section className="h-screen relative">
-        <div ref={mountRef} className="absolute inset-0" />
-        <div className="absolute bottom-0 left-0 p-8 z-50 text-[#EBEEE8]">
-          <div className="grid grid-rows-2">
-            <div className="text-3xl font-bold">forever learning</div>
-            <div className="text-3xl font-bold pl-29">& making waves</div>
+          <div className='col-span-3'>
+            <img
+              src="/assets/wink.png"
+              alt="Golden"
+              className="mx-auto rounded-sm"
+            />
+          </div>
+          <div className="col-span-2 flex items-center justify-end">
+            <div className="w-3/5">
+              <p className="text-xs text-right uppercase font-avant-book font-bold tracking-widest">
+                  We exist to challenge the mundane and monotonous
+              </p>
+            </div>
           </div>
         </div>
-        <div className="absolute bottom-0 right-0 p-8 z-50 text-[#EBEEE8]">
-          <div className="grid grid-rows-2">
-            <div className="text-2xl font-bold text-right">florida</div>
-            <div className="text-3xl font-bold text-right">{currentTime}</div>
-          </div>
-        </div>
-      </section>
-      <BioSection />
-      <StatementSection />
-    </main>
+      </div>
+    </>
   );
 }
