@@ -8,15 +8,37 @@ import {
   renderVertexShader,
   renderFragmentShader,
 } from "./shaders.js";
-
+import BioSection from "./sections/BioSection";
+import StatementSection from "./sections/StatementSection";
+import NavBar from "./navbar/NavBar";
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
 export default function Home() {
   const mountRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const estTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+      const timeString = estTime.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+        timeZone: 'America/New_York'
+      });
+      setCurrentTime(timeString);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -117,7 +139,7 @@ export default function Home() {
       ctx.font = `bold ${fontSize}px Poppins`;
       ctx.textAlign = "center";
       ctx.textBaseline = "top";
-      const topPadding = Math.round(90 * window.devicePixelRatio);
+      const topPadding = Math.round(70 * window.devicePixelRatio);
       ctx.fillText("alex klein", width / 2, topPadding);
       // const subtitleY = topPadding + fontSize + Math.round(10 * window.devicePixelRatio);
       // ctx.font = `normal ${Math.round(40 * window.devicePixelRatio)}px Poppins`;
@@ -211,30 +233,42 @@ export default function Home() {
 
   if (isMobile) {
     return (
-      <main className="w-screen h-screen flex items-center justify-center p-4">
-        {/* Mobile fallback content */}
-        <section className="text-center">
-          <h1 className="text-3xl font-bold">Welcome to my site</h1>
-          <p className="mt-2">Please visit on a desktop for the full experience.</p>
+      <main className="w-screen">
+        <section className="h-screen relative bg-[#279cfb]">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className="text-6xl md:text-6xl font-bold text-[#EBEEE8] font-poppins">alex klein</h1>
+          </div>
+          <div className="absolute bottom-0 left-0 p-8 z-50 text-[#EBEEE8]">
+            <div className="grid grid-rows-2">
+              <div className="text-2xl md:text-3xl font-bold">forever learning, dreaming, creating</div>
+              <div className="text-2xl md:text-3xl font-bold pl-8 md:pl-28">and always making waves</div>
+            </div>
+          </div>
         </section>
+        <BioSection />
       </main>
     );
   }
   return (
-    <main className="w-screen h-screen overflow-y-auto scroll-smooth snap-y snap-mandatory">
-      <section className="h-screen snap-start relative">
+    <main className="w-screen">
+      <NavBar />
+      <section className="h-screen relative">
         <div ref={mountRef} className="absolute inset-0" />
-        <div className="absolute bottom-0 left-0 p-8 z-50 text-white">
-          {/* overlay text */}
+        <div className="absolute bottom-0 left-0 p-8 z-50 text-[#EBEEE8]">
           <div className="grid grid-rows-2">
-            <div className="text-3xl font-bold">forever learning, dreaming, creating</div>
-            <div className="text-3xl font-bold pl-28">and always making waves</div>
+            <div className="text-3xl font-bold">forever learning</div>
+            <div className="text-3xl font-bold pl-29">& making waves</div>
+          </div>
+        </div>
+        <div className="absolute bottom-0 right-0 p-8 z-50 text-[#EBEEE8]">
+          <div className="grid grid-rows-2">
+            <div className="text-2xl font-bold text-right">florida</div>
+            <div className="text-3xl font-bold text-right">{currentTime}</div>
           </div>
         </div>
       </section>
-      <section className="h-screen snap-start bg-white text-black flex items-center justify-center">
-        <h2 className="text-4xl font-semibold">Welcome to the next section</h2>
-      </section>
+      <BioSection />
+      <StatementSection />
     </main>
   );
 }

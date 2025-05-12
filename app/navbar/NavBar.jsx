@@ -1,7 +1,7 @@
 const NavBar = () => {
     return (
-        <div className="fixed top-0 left-0 w-full z-50 grid grid-cols-3 p-8 items-center text-sm lg:text-lg font-bold">
-            <a className="justify-self-start" href="/">
+        <div className="absolute top-0 left-0 w-full z-50 grid grid-cols-18 gap-5 p-8 items-center text-sm lg:text-lg font-bold">
+            <a className="col-span-4 justify-self-start" href="/">
                 {/* AK Small Logo */}
                 <svg 
                     version="1.0" 
@@ -31,16 +31,15 @@ const NavBar = () => {
                     </g>
                 </svg>
             </a>
-            <nav className="justify-self-center">
-                <ul className="flex flex-row gap-4">
-                    <li><a href="/about" className="transform transition duration-100 hover:skew-12 uppercase" >about</a></li>
-                    <li><a href="/experience" className="transform transition duration-100 hover:skew-12 uppercase">experience</a></li>
-                    <li><a href="/school" className="transform transition duration-100 hover:skew-12 uppercase">school</a></li>
-                    <li><a href="/contact" className="transform transition duration-100 hover:skew-12 uppercase" >contact</a></li>
-                    <li><a href="/contact" className="transform transition duration-100 hover:skew-12 uppercase" >world</a></li>
+            <nav className="col-span-5">
+                <ul className="flex flex-row justify-start gap-2">
+                    <li><a href="/about" className="transform transition duration-100 hover:skew-12" >about</a>,</li>
+                    <li><a href="/experience" className="transform transition duration-100 hover:skew-12">experience</a>,</li>
+                    <li><a href="/school" className="transform transition duration-100 hover:skew-12">school</a>,</li>
+                    <li><a href="/experience" className="transform transition duration-100 hover:skew-12">thanks</a></li>
                 </ul>
             </nav>
-            <div className="justify-self-end uppercase">
+            <div className="col-span-9 justify-self-end uppercase">
                 <p>
                     4ever
                 </p>
