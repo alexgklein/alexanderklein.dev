@@ -1,6 +1,6 @@
 const NavBar = () => {
     return (
-        <div className="grid grid-cols-3 items-center text-sm lg:text-lg">
+        <div className="absolute top-0 left-0 w-full p-8 grid grid-cols-3 items-center text-sm lg:text-lg text-white">
             <a className="justify-self-start" href="/">
                 {/* AK Small Logo */}
                 <svg 
@@ -10,7 +10,7 @@ const NavBar = () => {
                     zoomAndPan="magnify" 
                     xmlnsXlink="http://www.w3.org/1999/xlink" 
                     xmlns="http://www.w3.org/2000/svg" 
-                    className="w-8 h-8 text-black dark:text-white"
+                    className="w-8 h-8"
                 >
                     <defs>
                     <g />
@@ -33,11 +33,9 @@ const NavBar = () => {
             </a>
             <nav className="justify-self-center">
                 <ul className="flex flex-row gap-4">
-                    <li><a href="/about" className="transform transition duration-100 hover:skew-12 uppercase" >about</a></li>
                     <li><a href="/experience" className="transform transition duration-100 hover:skew-12 uppercase">experience</a></li>
                     <li><a href="/school" className="transform transition duration-100 hover:skew-12 uppercase">school</a></li>
-                    <li><a href="/contact" className="transform transition duration-100 hover:skew-12 uppercase" >contact</a></li>
-                    <li><a href="/contact" className="transform transition duration-100 hover:skew-12 uppercase" >world</a></li>
+                    <li><a href="/contact" className="transform transition duration-100 hover:skew-12 uppercase" >gratitude</a></li>
                 </ul>
             </nav>
             <div className="justify-self-end uppercase">
