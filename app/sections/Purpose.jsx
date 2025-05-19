@@ -3,7 +3,7 @@ import React from 'react';
 const Purpose = () => {
   return (
     <>
-        <section className='hidden lg:block h-screen p-8 grid grid-cols-12 grid-rows-3 gap-24'>
+        <section className='hidden lg:block p-8 grid grid-cols-12 grid-rows-3 gap-24'>
             {/* Row 1 */}
             <div className="col-span-12 row-span-1 grid grid-cols-12 gap-4">
                 <div className="col-span-8 flex items-center">

@@ -33,9 +33,9 @@ const NavBar = () => {
             </a>
             <nav className="justify-self-center">
                 <ul className="flex flex-row gap-4">
-                    <li><a href="/experience" className="transform transition duration-100 hover:skew-12 uppercase">experience</a></li>
-                    <li><a href="/school" className="transform transition duration-100 hover:skew-12 uppercase">school</a></li>
-                    <li><a href="/contact" className="transform transition duration-100 hover:skew-12 uppercase" >gratitude</a></li>
+                    <li><a href="/about" className="transform transition duration-100 hover:skew-12 uppercase">about</a></li>
+                    <li><a href="/projects" className="transform transition duration-100 hover:skew-12 uppercase">projects</a></li>
+                    <li><a href="/resume" className="transform transition duration-100 hover:skew-12 uppercase" >resume</a></li>
                 </ul>
             </nav>
             <div className="justify-self-end uppercase">
