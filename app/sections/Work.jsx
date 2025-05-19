@@ -6,37 +6,37 @@ const Work = () => {
         {/* Header */}
         <div className="grid grid-cols-12 grid-rows-2 gap-4">
             <div className="col-span-12 row-span-1 flex items-center">
-                <p className="w-full text-8xl uppercase font-avant-book font-bold">
+                <p className="w-full text-8xl uppercase  font-medium">
                     Experiences
                 </p>
             </div>
             <div className="col-span-12 grid grid-cols-12 row-span-1">
                 <div className="col-span-2"/>
                 <div className="col-span-6 flex items-center">
-                    <p className="w-full text-8xl uppercase font-avant-book font-bold">
+                    <p className="w-full text-8xl uppercase  font-medium">
                         & Milestones
                     </p>
                 </div>
                 <div className="col-span-4 flex items-center">
-                    <p className="w-full text-8xl text-right uppercase font-avant-book font-bold">
+                    <p className="w-full text-8xl text-right uppercase  font-medium">
                         (2025)
                     </p>
                 </div>
             </div>
         </div>
         {/* Collections */}
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 space-y-24'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 space-y-24 '>
             <div className='col-span-1'>
                 <div className=''>
                         <img src="/assets/sanfran.webp" alt="Akima" className='w-full h-full object-cover'/>
                 </div>
-                <div className='mt-2 text-sm uppercase font-bold flex flex-row items-center justify-between'>
+                <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                     <div className='flex items-center'>
                         <p>Solutions Engineer Intern</p>
-                        <p className='ml-6 font-bold'>@</p>
-                        <p className='ml-6 font-bold'>Deloitte</p>
+                        <p className='ml-6'>@</p>
+                        <p className='ml-6'>Deloitte</p>
                     </div>
-                    <div className='text-right font-bold'>
+                    <div className='text-right'>
                         Summer 2025
                     </div>
                 </div>
@@ -45,13 +45,13 @@ const Work = () => {
                 <div className=''>
                     <img src="/assets/akima.webp" alt="Akima" className='w-full h-full object-cover'/>
                 </div>
-                <div className='mt-2 text-sm uppercase font-bold flex flex-row items-center justify-between'>
+                <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                     <div className='flex items-center'>
                         <p>Solutions Engineer Intern</p>
-                        <p className='ml-6 font-bold'>@</p>
-                        <p className='ml-6 font-bold'>Akima</p>
+                        <p className='ml-6'>@</p>
+                        <p className='ml-6'>Akima</p>
                     </div>
-                    <div className='text-right font-bold'>
+                    <div className='text-right'>
                         Summer 2024
                     </div>
                 </div>
@@ -60,13 +60,13 @@ const Work = () => {
                 <div className=''>
                     <img src="/assets/acmcrew.webp" alt="ACM Crew" className='w-full h-full object-cover'/>
                 </div>
-                <div className='mt-2 text-sm uppercase font-bold flex flex-row items-center justify-between'>
+                <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                     <div className='flex items-center'>
                         <p>President</p>
-                        <p className='ml-6 font-bold'>@</p>
-                        <p className='ml-6 font-bold'>ACM</p>
+                        <p className='ml-6'>@</p>
+                        <p className='ml-6'>ACM</p>
                     </div>
-                    <div className='text-right font-bold'>
+                    <div className='text-right'>
                         2023 — 2025
                     </div>
                 </div>
@@ -76,13 +76,13 @@ const Work = () => {
                 <div className=''>
                     <img src="/assets/valedictorian.webp" alt="Valedictorian" className='w-full h-full object-cover'/>
                 </div>
-                <div className='mt-2 text-sm uppercase font-bold flex flex-row items-center justify-between'>
+                <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                     <div className='flex items-center'>
                         <p>Valedictorian</p>
-                        <p className='ml-6 font-bold'>@</p>
-                        <p className='ml-6 font-bold'>J.P. Taravella</p>
+                        <p className='ml-6'>@</p>
+                        <p className='ml-6'>J.P. Taravella</p>
                     </div>
-                    <div className='text-right font-bold'>
+                    <div className='text-right'>
                         2022
                     </div>
                 </div>
