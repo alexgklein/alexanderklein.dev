@@ -76,6 +76,10 @@ const Footer = () => {
                             only child, I am blessed to have built my
                             own life with those who I love. You are the
                             reason I am able to do what I love.
+                            <br />
+                            <br />
+                            To you who has at least read this far,
+                            thank you.
                         </p>
                         <p className='mt-8 text-md font-medium uppercase'>
                             (Info)
