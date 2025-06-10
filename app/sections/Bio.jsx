@@ -3,8 +3,8 @@ import React from 'react';
 const Bio = () => {
   return (
     <>
-        <section className='p-8 grid grid-cols-12 gap-36'>
-            <div className='col-span-3 space-y-4'>
+        <section className='p-8 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-36'>
+            <div className='col-span-1 md:col-span-3 space-y-4'>
                 <div>
                     <p className='text-md font-medium uppercase'>
                         (Bio)
@@ -34,18 +34,18 @@ const Bio = () => {
                     </ul>
                 </div>
             </div>
-            <div className='col-span-8 space-y-4'>
-                <p className='text-5xl font-medium indent-12 tracking-tight leading-14'>
+            <div className='col-span-1 md:col-span-8 space-y-4'>
+                <p className='text-2xl text-justify sm:text-left md:text-5xl font-medium indent-12 tracking-tight leading-14'>
                     Alex is a Computer Science student at the University of Florida,
                     with a passion for learning, creativity, and progress. 
                 </p>
-                <p className='text-5xl font-medium indent-12 tracking-tight leading-14'>
+                <p className='text-2xl text-justify sm:text-left md:text-5xl font-medium indent-12 tracking-tight leading-14'>
                     He is the President at UF ACM, 
                     where he empowers students to break into the tech industry. 
                     He has interned as a software engineer at Deloitte and Akima, 
                     improving national security systems.
                 </p>
-                <p className='text-5xl font-medium indent-12 tracking-tight leading-14'>
+                <p className='text-2xl text-justify sm:text-left md:text-5xl font-medium indent-12 tracking-tight leading-14'>
                     He hopes to become a leader in technology,
                     using the power of software to make humans more efficient,
                     and inspiring others to do the same.

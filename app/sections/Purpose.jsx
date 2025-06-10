@@ -45,7 +45,7 @@ const Purpose = () => {
             </div>
         </section>
         {/* Mobile */}
-        <section className='lg:hidden h-screen p-8 space-y-4'>
+        <section className='lg:hidden p-8 space-y-4'>
             {/* Row 1 */}
             <div className="col-span-12 grid grid-cols-12">
                 <div className="col-span-12 flex flex-col items-center space-y-4">
@@ -67,7 +67,7 @@ const Purpose = () => {
                     <img src="/assets/pool.png" alt="Pool" className="object-contain h-full w-full" />
                 </div>
             </div>
-            {/* Row 3 */}
+            {/* Row 3
             <div className="col-span-12 grid grid-cols-12">
                 <div className="col-span-12 space-y-4">
                     <p className="text-sm md:text-base text-left uppercase leading-none font-medium w-full">
@@ -88,7 +88,7 @@ const Purpose = () => {
                         feel effortless and truly yours.
                 </p>
                 </div>
-            </div>
+            </div> */}
         </section>
     </>
     

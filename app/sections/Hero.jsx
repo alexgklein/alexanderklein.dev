@@ -167,13 +167,13 @@ const Hero = () => {
                 <div className="absolute bottom-0 left-0 p-8 text-white uppercase">
                     <div className="grid grid-rows-3">
                     <div className="text-xl sm:text-3xl font-bold tracking-tighter">forever learning</div>
-                    <div className="text-xl sm:text-3xl font-bold tracking-tighter">helping people achieve goals</div>
-                    <div className="text-xl sm:text-3xl font-bold tracking-tighter">& having fun along the way</div>
+                    <div className="hidden sm:block text-xl sm:text-3xl font-bold tracking-tighter">helping people achieve goals</div>
+                    <div className="hidden sm:block text-xl sm:text-3xl font-bold tracking-tighter">& having fun along the way</div>
                     </div>
                 </div>
                 {/* Bottom Right Text */}
                 <div className="absolute bottom-0 right-0 p-8 text-white uppercase">
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1 sm:gap-2">
                     <a href="mailto:alexandergeorgeklein@gmail.com" className="text-md font-bold tracking-tighter text-right flex items-center justify-end gap-1 group">
                         <span className='transition-all duration-300 group-hover:mr-1'>email</span>
                         <svg className="w-4 h-4 transform transition-transform group-hover:rotate-45 duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

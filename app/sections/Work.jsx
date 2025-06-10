@@ -13,7 +13,7 @@ const Work = () => {
             <div className="col-span-12 grid grid-cols-12 row-span-1">
                 <div className="col-span-2"/>
                 <div className="col-span-6 flex items-center">
-                    <p className="w-full text-8xl uppercase  font-medium">
+                    <p className="w-full text-8xl uppercase font-medium">
                         & Milestones
                     </p>
                 </div>
@@ -27,13 +27,13 @@ const Work = () => {
         <div className="md:hidden grid grid-rows-2 gap-4">
             <div className="row-span-1 flex items-center">
                 <p className="w-full text-5xl uppercase  font-medium">
-                    Experiences & 
+                    Experiences  
                 </p>
             </div>
             <div className="row-span-1">
                 <div className="flex items-center justify-between">
                     <p className="w-full text-5xl uppercase  font-medium">
-                        Milestones
+                     & Milestones
                     </p>
                 </div>
             </div>

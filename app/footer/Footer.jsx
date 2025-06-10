@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="w-full border-t border-gray-300">
             <div className='grid grid-cols-1 md:grid-cols-3 p-8'>
                 <div className='col-span-1 order-3 md:order-1'>
-                    <div className='flex flex-col items-center justify-center md:w-3/5 space-y-4'>
+                    <div className='mt-12 sm:mt-0 flex flex-col items-center justify-center md:w-3/5 space-y-4'>
                         <div>
                             <img src="/assets/lucky.webp" alt="Rock On" className='' />
                         </div>
@@ -64,7 +64,7 @@ const Footer = () => {
                         </nav>
                     </div>
                 </div>
-                <div className='col-span-1 w-5/6 order-2 md:order-3'>
+                <div className='mt-12 sm:mt-0 col-span-1 w-5/6 order-2 md:order-3'>
                     <div className='flex flex-col items-start justify-start space-y-4'>
                         <p className='text-md font-medium uppercase'>
                             (Acknowledgement)
