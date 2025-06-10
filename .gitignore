@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # ignore public fonts
-/public/fonts/
+# /public/fonts/
