@@ -32,15 +32,15 @@ const NavBar = () => {
                 </svg>
             </a>
             <nav className="justify-self-center">
-                <ul className="flex flex-row gap-4 font-bold">
+                {/* <ul className="flex flex-row gap-4 font-bold">
                     <li><a href="/about" className="transform transition duration-100 hover:skew-12 uppercase">about</a></li>
                     <li><a href="/projects" className="transform transition duration-100 hover:skew-12 uppercase">projects</a></li>
                     <li><a href="/resume" className="transform transition duration-100 hover:skew-12 uppercase" >resume</a></li>
-                </ul>
+                </ul> */}
             </nav>
             <div className="justify-self-end">
                 <p className="uppercase font-bold">
-                    4ever
+                    Have a lucky day!
                 </p>
             </div>
         </div>

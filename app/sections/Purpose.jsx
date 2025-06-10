@@ -8,9 +8,9 @@ const Purpose = () => {
             <div className="col-span-12 row-span-1 grid grid-cols-12 gap-4">
                 <div className="col-span-8 flex items-center">
                     <p className="w-full text-9xl uppercase font-medium tracking-tight">
-                        Designing 
+                        Chasing 
                         <br/>
-                        Homes With
+                        A Better Life
                     </p>
                 </div>
                 <div className="col-span-4"/>
@@ -19,13 +19,13 @@ const Purpose = () => {
             <div className="col-span-12 row-span-1 grid grid-cols-12">
                 <div className="col-span-4"></div>
                 <div className="col-span-3 flex items-center mb-0.5">
-                    <img src="/assets/pool.png" alt="Pool" className="object-contain h-[228px]" />
+                    <img src="/assets/pooool.webp" alt="Pool" className="object-contain h-[220px]" />
                 </div>
                 <div className="col-span-5">
                     <p className="text-9xl text-left uppercase font-medium tracking-tight">
-                        People 
+                        Each & 
                         <br/>
-                        At Heart
+                        Everyday
                     </p>
                 </div>
             </div>
@@ -34,18 +34,7 @@ const Purpose = () => {
                 <div className="col-span-4"/>
                 <div className="col-span-3">
                     <p className="text-lg text-left font-medium w-full text-wrap">
-                        We design spaces for people. No matter
-                        the scale of the projects, our
-                        down-to-earth approach stays the same.
-                        We listen first, design second. We take the
-                        time to understand how you live, work, and
-                        move through your space.
-                        <br />
-                        <br />
-                        Then, we bring your vision to life. Drawing
-                        from real experience, we create
-                        contemporary, aspirational spaces that
-                        feel effortless and truly yours.
+                        
                     </p>
                 </div>
                 <div className="col-span-5">
@@ -61,14 +50,14 @@ const Purpose = () => {
             <div className="col-span-12 grid grid-cols-12">
                 <div className="col-span-12 flex flex-col items-center space-y-4">
                     <p className="w-full text-5xl md:text-7xl uppercase font-medium">
-                        Designing 
+                        Chasing 
                         <br/>
-                        Homes With                        
+                        Better Life                        
                     </p>
                     <p className="w-full text-right text-5xl md:text-7xl uppercase font-medium">
-                        People 
+                        Each & 
                         <br/>
-                        At Heart                        
+                        Everyday                        
                     </p>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <footer className="w-full border-t border-gray-300">
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-8 p-8'>
+            <div className='grid grid-cols-1 md:grid-cols-3 p-8'>
                 <div className='col-span-1 order-3 md:order-1'>
                     <div className='flex flex-col items-center justify-center md:w-3/5 space-y-4'>
                         <div>
@@ -47,7 +47,7 @@ const Footer = () => {
                             <ul className="text-5xl font-medium tracking-tight space-y-4">
                                 <li><a href="/" className="">Home</a></li>
                                 <li><a href="/about" className="">About</a></li>
-                                <li><a href="/projects" className="">Projects</a></li>
+                                {/* <li><a href="/projects" className="">Projects</a></li> */}
                                 <li><a href="/resume" className="">Resume</a></li>
                             </ul>
                         </nav>
@@ -72,10 +72,9 @@ const Footer = () => {
                         <p className='text-lg font-medium'>
                             I am forever grateful for the support
                             in all that I do, from my mother, father,
-                            and those who closely surround me. As an
-                            only child, I am blessed to have built my
-                            own life with those who I love. You are the
-                            reason I am able to do what I love.
+                            and those who closely surround me. You are the
+                            reason I am able to do what I love. Thank you
+                            for your unwavering optimism and support.
                             <br />
                             <br />
                             To you who has at least read this far,
@@ -89,6 +88,10 @@ const Footer = () => {
                             reach out to me at <a href="mailto:klein.a@ufl.edu">klein.a@ufl.edu</a>
                             &nbsp;
                             or connect with me on <a href="https://www.linkedin.com/in/klein-alex/">LinkedIn</a>.
+                            <br />
+                            <br />
+                            This site is still a work in progress,
+                            so please excuse the mess.
                         </p>
                     </div>
                 </div>
@@ -101,7 +104,7 @@ const Footer = () => {
                         forever learning
                     </div>
                     <div className="col-span-1 flex flex-row items-center justify-between">
-                        <p>Thank You And</p>
+                        <p>Thank You &</p>
                         <p>Have A Lucky Day!</p>
                     </div>
             </div>    
