@@ -43,19 +43,35 @@ const Work = () => {
         </div>
         {/* Collections */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 space-y-8 sm:space-y-24 '>
-            <div className='col-span-1 w-5/6 sm:w-full h-full'>
+            <div className='col-span-1 w-5/6 sm:w-full h-full justify-self-end'>
                 <div className=''>
-                        <img src="/assets/sanfran.webp" alt="Akima" className='object-cover'/>
+                    <img src="/assets/deloitte.webp" alt="Deloitte" className='object-cover'/>
                 </div>
                 <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                     <div className='flex items-center'>
                         <p className='hidden sm:block'>Solutions Engineer Intern</p>
                         <p className='block sm:hidden'>Intern</p>
-                        <p className='ml-3 sm:ml-6'>@</p>
-                        <p className='ml-3 sm:ml-6'>Deloitte</p>
+                        <p className='ml-6'>@</p>
+                        <p className='ml-6'>Deloitte</p>
                     </div>
                     <div className='text-right'>
                         Summer 2025
+                    </div>
+                </div>
+            </div>
+            <div className='col-span-1 w-5/6 sm:w-full h-full'>
+                <div className=''>
+                        <img src="/assets/research.webp" alt="Research" className='object-cover'/>
+                </div>
+                <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
+                    <div className='flex items-center'>
+                        <p className='hidden sm:block'>Machine Learning Research Assistant</p>
+                        <p className='block sm:hidden'>AI Researcher</p>
+                        <p className='ml-3 sm:ml-6'>@</p>
+                        <p className='ml-3 sm:ml-6'>FINS</p>
+                    </div>
+                    <div className='text-right'>
+                        2024 — 2025
                     </div>
                 </div>
             </div>
