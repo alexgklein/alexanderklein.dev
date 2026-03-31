@@ -1,6 +1,6 @@
 const NavBar = () => {
     return (
-        <div className="absolute top-0 left-0 w-full p-8 grid grid-cols-3 items-center text-sm lg:text-lg text-white">
+        <div className="absolute top-0 left-0 w-full p-8 grid grid-cols-3 items-center text-sm lg:text-lg text-white z-50">
             <div className="justify-self-start overflow-hidden">
                 <a className="block animate-slide-up" href="/">
                 {/* AK Small Logo */}
