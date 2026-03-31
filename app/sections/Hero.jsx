@@ -18,15 +18,15 @@ const Hero = () => {
                 <div className="space-y-2 w-full">
                 {/* Alexander (Top) Line */}
                 <div className="grid grid-cols-5 h-1/2">
-                    <div className="col-span-5 sm:col-span-4">
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        xmlnsXlink="http://www.w3.org/1999/xlink" 
-                        zoomAndPan="magnify" 
-                        preserveAspectRatio="xMidYMid meet" 
-                        version="1.0" 
+                    <div className="col-span-5 sm:col-span-4 overflow-hidden">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                        zoomAndPan="magnify"
+                        preserveAspectRatio="xMidYMid meet"
+                        version="1.0"
                         viewBox="4.22 313.52 919.6 130.38"
-                        className="w-full text-white"
+                        className="w-full text-white animate-slide-up"
                     >
                         <defs>
                         <g />
@@ -111,15 +111,15 @@ const Hero = () => {
                         <p className="text-5xl font-bold text-left ml-3">"</p>
                     </div> */}
                     </div>
-                    <div className="col-span-3 sm:col-span-2">
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        xmlnsXlink="http://www.w3.org/1999/xlink" 
-                        zoomAndPan="magnify" 
-                        preserveAspectRatio="xMidYMid meet" 
-                        version="1.0" 
+                    <div className="col-span-3 sm:col-span-2 overflow-hidden">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                        zoomAndPan="magnify"
+                        preserveAspectRatio="xMidYMid meet"
+                        version="1.0"
                         viewBox="11.19 16.31 418.83 130.36"
-                        className="pl-16 w-full text-white"
+                        className="pl-16 w-full text-white animate-slide-up"
                     >
                         <defs>
                         <g />

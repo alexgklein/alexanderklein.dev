@@ -89,6 +89,22 @@
   }
 }
 
+@keyframes heroSlideUp {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+
+.zoom-photo img {
+  transform: scale(1.08);
+  filter: brightness(0);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
+}
+
+.zoom-photo.visible img {
+  transform: scale(1);
+  filter: brightness(1);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -104,5 +120,8 @@ body {
   }
   .font-pp-neue-montreal {
     font-family: 'PP Neue Montreal', sans-serif;
+  }
+  .animate-slide-up {
+    animation: heroSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
 }

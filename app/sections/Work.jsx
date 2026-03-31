@@ -1,6 +1,24 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 
 const Work = () => {
+  useEffect(() => {
+    const els = document.querySelectorAll('.zoom-photo');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    els.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className='p-8'>
         {/* Header */}
@@ -44,7 +62,7 @@ const Work = () => {
         {/* Collections */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 space-y-8 sm:space-y-24 '>
             <div className='col-span-1 w-5/6 sm:w-full h-full justify-self-end'>
-                <div className=''>
+                <div className='zoom-photo overflow-hidden'>
                     <img src="/assets/deloitte.webp" alt="Deloitte" className='object-cover'/>
                 </div>
                 <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
@@ -60,7 +78,7 @@ const Work = () => {
                 </div>
             </div>
             <div className='col-span-1 w-5/6 sm:w-full h-full'>
-                <div className=''>
+                <div className='zoom-photo overflow-hidden'>
                         <img src="/assets/research.webp" alt="Research" className='object-cover'/>
                 </div>
                 <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
@@ -76,7 +94,7 @@ const Work = () => {
                 </div>
             </div>
             <div className='col-span-1 w-5/6 justify-self-end sm:justify-self-center sm:w-full h-full'>
-                <div className=''>
+                <div className='zoom-photo overflow-hidden'>
                     <img src="/assets/akima.webp" alt="Akima" className='object-cover'/>
                 </div>
                 <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
@@ -92,7 +110,7 @@ const Work = () => {
                 </div>
             </div>
             <div className='col-span-1 w-5/6 sm:w-full h-full'>
-                <div className=''>
+                <div className='zoom-photo overflow-hidden'>
                     <img src="/assets/acmcrew.webp" alt="ACM Crew" className='object-cover'/>
                 </div>
                 <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
@@ -108,7 +126,7 @@ const Work = () => {
             </div>
 
             <div className='col-span-1 w-5/6 justify-self-end sm:justify-self-center sm:w-full h-full'>
-                <div className=''>
+                <div className='zoom-photo overflow-hidden'>
                     <img src="/assets/valedictorian.webp" alt="Valedictorian" className='object-cover'/>
                 </div>
                 <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
