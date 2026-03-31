@@ -11,7 +11,7 @@ const Bio = () => {
                     </p>
                 </div>
                 <div>
-                    <img src="/assets/rock.webp" alt="Alexander" />
+                    <img loading="eager" decoding="async" src="/assets/rock.webp" alt="Alexander" />
                 </div>
                 <div>
                     <ul>

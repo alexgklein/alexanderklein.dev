@@ -63,7 +63,7 @@ const Work = () => {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 space-y-8 sm:space-y-24 '>
                 <div className='col-span-1 w-5/6 sm:w-full h-full justify-self-end'>
                     <div className='zoom-photo overflow-hidden'>
-                        <img src="/assets/deloitte.webp" alt="Deloitte" className='object-cover' />
+                        <img loading="eager" decoding="async" src="/assets/deloitte.webp" alt="Deloitte" className='object-cover' />
                     </div>
                     <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                         <div className='flex items-center'>
@@ -79,7 +79,7 @@ const Work = () => {
                 </div>
                 <div className='col-span-1 w-5/6 sm:w-full h-full'>
                     <div className='zoom-photo overflow-hidden'>
-                        <img src="/assets/research.webp" alt="Research" className='object-cover' />
+                        <img loading="eager" decoding="async" src="/assets/research.webp" alt="Research" className='object-cover' />
                     </div>
                     <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                         <div className='flex items-center'>
@@ -95,7 +95,7 @@ const Work = () => {
                 </div>
                 <div className='col-span-1 w-5/6 justify-self-end sm:justify-self-center sm:w-full h-full'>
                     <div className='zoom-photo overflow-hidden'>
-                        <img src="/assets/akima.webp" alt="Akima" className='object-cover' />
+                        <img loading="eager" decoding="async" src="/assets/akima.webp" alt="Akima" className='object-cover' />
                     </div>
                     <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                         <div className='flex items-center'>
@@ -111,7 +111,7 @@ const Work = () => {
                 </div>
                 <div className='col-span-1 w-5/6 sm:w-full h-full'>
                     <div className='zoom-photo overflow-hidden'>
-                        <img src="/assets/acmcrew.webp" alt="ACM Crew" className='object-cover' />
+                        <img loading="eager" decoding="async" src="/assets/acmcrew.webp" alt="ACM Crew" className='object-cover' />
                     </div>
                     <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                         <div className='flex items-center'>
@@ -127,7 +127,7 @@ const Work = () => {
 
                 <div className='col-span-1 w-5/6 justify-self-end sm:justify-self-center sm:w-full h-full'>
                     <div className='zoom-photo overflow-hidden'>
-                        <img src="/assets/valedictorian.webp" alt="Valedictorian" className='object-cover' />
+                        <img loading="eager" decoding="async" src="/assets/valedictorian.webp" alt="Valedictorian" className='object-cover' />
                     </div>
                     <div className='mt-2 text-sm uppercase font-medium flex flex-row items-center justify-between'>
                         <div className='flex items-center'>

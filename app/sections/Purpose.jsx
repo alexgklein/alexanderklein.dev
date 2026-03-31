@@ -70,7 +70,7 @@ const Purpose = () => {
                     <div className="col-span-4"></div>
                     <div className="col-span-3 flex items-center mb-0.5">
                         <div className="zoom-photo zoom-photo-purpose overflow-hidden">
-                            <img src="/assets/pooool.webp" alt="Pool" className="object-contain h-[220px]" />
+                            <img loading="eager" src="/assets/pooool.webp" alt="Pool" className="object-contain h-[220px]" />
                         </div>
                     </div>
                     <div className="col-span-5">
@@ -138,7 +138,7 @@ const Purpose = () => {
                 <div className="col-span-12 grid grid-cols-12">
                     <div className="col-span-12 flex items-center">
                         <div className="zoom-photo zoom-photo-purpose overflow-hidden w-full">
-                            <img src="/assets/pool.png" alt="Pool" className="object-contain h-full w-full" />
+                            <img loading="eager" decoding="async" src="/assets/pool.png" alt="Pool" className="object-contain h-full w-full" />
                         </div>
                     </div>
                 </div>
@@ -171,4 +171,3 @@ const Purpose = () => {
 };
 
 export default Purpose;
- 

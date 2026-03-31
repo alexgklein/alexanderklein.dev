@@ -1,7 +1,8 @@
 const NavBar = () => {
     return (
         <div className="absolute top-0 left-0 w-full p-8 grid grid-cols-3 items-center text-sm lg:text-lg text-white">
-            <a className="justify-self-start" href="/">
+            <div className="justify-self-start overflow-hidden">
+                <a className="block animate-slide-up" href="/">
                 {/* AK Small Logo */}
                 <svg 
                     version="1.0" 
@@ -30,18 +31,23 @@ const NavBar = () => {
                     </g>
                     </g>
                 </svg>
-            </a>
-            <nav className="justify-self-center">
+                </a>
+            </div>
+            <div className="justify-self-center overflow-hidden">
+                <nav className="animate-slide-up-d2">
                 {/* <ul className="flex flex-row gap-4 font-bold">
                     <li><a href="/about" className="transform transition duration-100 hover:skew-12 uppercase">about</a></li>
                     <li><a href="/projects" className="transform transition duration-100 hover:skew-12 uppercase">projects</a></li>
                     <li><a href="/resume" className="transform transition duration-100 hover:skew-12 uppercase" >resume</a></li>
                 </ul> */}
             </nav>
-            <div className="justify-self-end">
+            </div>
+            <div className="justify-self-end overflow-hidden">
+                <div className="animate-slide-up-d3">
                 <p className="uppercase font-bold">
                     Have a lucky day!
                 </p>
+                </div>
             </div>
         </div>
     );
