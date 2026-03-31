@@ -124,4 +124,32 @@ body {
   .animate-slide-up {
     animation: heroSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
+  .animate-slide-up-d2 {
+    animation: heroSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+  .animate-slide-up-d3 {
+    animation: heroSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+  .animate-slide-up-d4 {
+    animation: heroSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  }
+}
+
+.purpose-line {
+  transform: translateY(110%);
+}
+.purpose-line.visible {
+  animation: heroSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.purpose-line-2.visible {
+  animation-delay: 0.1s;
+}
+.purpose-line-3.visible {
+  animation-delay: 0.2s;
+}
+.purpose-line-4.visible {
+  animation-delay: 0.3s;
+}
+.purpose-line-5.visible {
+  animation-delay: 0.4s;
 }

@@ -166,32 +166,32 @@ const Hero = () => {
                 {/* Bottom Left Text */}
                 <div className="absolute bottom-0 left-0 p-8 text-white uppercase">
                     <div className="grid grid-rows-3">
-                    <div className="text-xl sm:text-3xl font-bold tracking-tighter">forever learning</div>
-                    <div className="hidden sm:block text-xl sm:text-3xl font-bold tracking-tighter">helping people achieve goals</div>
-                    <div className="hidden sm:block text-xl sm:text-3xl font-bold tracking-tighter">& having fun along the way</div>
+                    <div className="overflow-hidden"><div className="text-xl sm:text-3xl font-bold tracking-tighter animate-slide-up-d2">forever learning</div></div>
+                    <div className="overflow-hidden"><div className="hidden sm:block text-xl sm:text-3xl font-bold tracking-tighter animate-slide-up-d3">helping people achieve goals</div></div>
+                    <div className="overflow-hidden"><div className="hidden sm:block text-xl sm:text-3xl font-bold tracking-tighter animate-slide-up-d4">& having fun along the way</div></div>
                     </div>
                 </div>
                 {/* Bottom Right Text */}
                 <div className="absolute bottom-0 right-0 p-8 text-white uppercase">
                     <div className="flex flex-col gap-1 sm:gap-2">
-                    <a href="mailto:alexandergeorgeklein@gmail.com" className="text-md font-bold tracking-tighter text-right flex items-center justify-end gap-1 group">
+                    <div className="overflow-hidden"><a href="mailto:alexandergeorgeklein@gmail.com" className="text-md font-bold tracking-tighter text-right flex items-center justify-end gap-1 group animate-slide-up-d2">
                         <span className='transition-all duration-300 group-hover:mr-1'>email</span>
                         <svg className="w-4 h-4 transform transition-transform group-hover:rotate-45 duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 19l14-14m0 0H9m10 0v10" />
                         </svg>
-                    </a>
-                    <a href="https://github.com/alexgklein" className="text-md font-bold tracking-tighter text-right flex items-center justify-end gap-1 group">
+                    </a></div>
+                    <div className="overflow-hidden"><a href="https://github.com/alexgklein" className="text-md font-bold tracking-tighter text-right flex items-center justify-end gap-1 group animate-slide-up-d3">
                         <span className='transition-all duration-300 group-hover:mr-1'>github</span>
                         <svg className="w-4 h-4 transform transition-transform group-hover:rotate-45 duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 19l14-14m0 0H9m10 0v10" />
                         </svg>
-                    </a>
-                    <a href="http://www.linkedin.com/in/klein-alex/" className="text-md font-bold tracking-tighter text-right flex items-center justify-end gap-1 group">
+                    </a></div>
+                    <div className="overflow-hidden"><a href="http://www.linkedin.com/in/klein-alex/" className="text-md font-bold tracking-tighter text-right flex items-center justify-end gap-1 group animate-slide-up-d4">
                         <span className='transition-all duration-300 group-hover:mr-1'>linkedin</span>
                         <svg className="w-4 h-4 transform transition-transform group-hover:rotate-45 duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 19l14-14m0 0H9m10 0v10" />
                         </svg>
-                    </a>
+                    </a></div>
                     </div>
                 </div>
             </div>
